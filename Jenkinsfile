@@ -30,11 +30,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat '''
-                if not exist C:\\website mkdir C:\\website
+                if not exist D:\\website mkdir D:\\website
 
-                copy /Y index.html C:\\website\\index.html
+                copy /Y index.html D:\\website\\index.html
 
-                echo Deployment Successful
+                dir D:\\website
                 '''
             }
         }
@@ -42,11 +42,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline Executed Successfully'
+            echo 'Deployment Successful'
         }
-
         failure {
-            echo 'Pipeline Failed'
+            echo 'Deployment Failed'
         }
     }
 }
